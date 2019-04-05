@@ -1,0 +1,16 @@
+<h1>Links#new</h1>
+
+<%= render partial: 'shared/flashes' %>
+
+<%= form_for @link do |f| %>
+	<%= f.label "长链接（必填）" %>
+	<%= f.text_field :url %>(url需要包含http://)
+	<br><br>
+	<%= f.label "短链接（选填）" %>
+	<%= f.text_field :keyword%>
+	(不填写则自动生成短链接。自动生成需求：是否纯数字<%= select_tag :is_number, options_for_select([["是", true], ["否", false]]) %>,
+	长度<%= number_field_tag :length, nil, min: 6, placeholder: "最小长度为6" %>)
+
+	<br><br>
+	<%= f.submit "创建" %>
+<% end %>
