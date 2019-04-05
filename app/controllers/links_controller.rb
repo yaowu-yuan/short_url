@@ -21,6 +21,7 @@ class LinksController < ApplicationController
     @link = Link.find_by_id(params[:id])
   end
 
+  # 识别短码后重定向到长链
   def redirect_short_url
     path = params[:path]
     link = Link.find_by_keyword(path)
