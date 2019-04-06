@@ -30,7 +30,7 @@ class LinksController < ApplicationController
       url = link.url
       return redirect_to url
     end
-    render file: "#{Rails.root}/public/404"
+    render file: "#{Rails.root}/public/404", status: 404
   end
 
   private

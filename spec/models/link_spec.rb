@@ -36,7 +36,14 @@ RSpec.describe Link, type: :model do
 			link.url = "http://www.google.com"
 			link.length = 10
 			link.save
-			expect(link.keyword.length).to eq(10)
+
+			data = true
+			link.keyword.each_char do |k|
+				if not [0..9].map { |range| range.to_a }.flatten.include?(k.to_i)
+					data = false
+				end
+			end
+			expect(data).to eq(true)
 		end
 
 		it "set is_number" do
